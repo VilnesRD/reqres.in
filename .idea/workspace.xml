@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2e39373-4148-4462-b9ea-8881995f0764" name="Changes" comment="">
+    <list default="true" id="e2e39373-4148-4462-b9ea-8881995f0764" name="Changes" comment="First commit">
+      <change afterPath="$PROJECT_DIR$/src/test/java/test/Specs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test/lombok/LombokUserData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test/lombok/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test/model/UserData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/ReqresInTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/ReqresInTest.java" afterDir="false" />
@@ -54,7 +59,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.ReqresInTest">
+  <component name="RunManager" selected="Gradle.ReqresInTest.checkEmailUsingGroovy">
     <configuration name="ReqresInTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -78,7 +83,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ReqresInTest.registerSuccessful" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ReqresInTest.checkEmailUsingGroovy" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -91,7 +96,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;test.ReqresInTest.registerSuccessful&quot;" />
+            <option value="&quot;test.ReqresInTest.checkEmailUsingGroovy&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -101,7 +106,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ReqresInTest.registerUnSuccessful" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ReqresInTest.checkFirstNameSingleUser" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -114,7 +119,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;test.ReqresInTest.registerUnSuccessful&quot;" />
+            <option value="&quot;test.ReqresInTest.checkFirstNameSingleUser&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -124,7 +129,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ReqresInTest.updateSuccessful" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ReqresInTest.checkIdSingleUser" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -137,7 +142,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;test.ReqresInTest.updateSuccessful&quot;" />
+            <option value="&quot;test.ReqresInTest.checkIdSingleUser&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -147,7 +152,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ReqresInTest.updateUnsuccessful" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ReqresInTest.singleUserWithLombok" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -160,7 +165,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;test.ReqresInTest.updateUnsuccessful&quot;" />
+            <option value="&quot;test.ReqresInTest.singleUserWithLombok&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -172,11 +177,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ReqresInTest.checkEmailUsingGroovy" />
         <item itemvalue="Gradle.ReqresInTest" />
-        <item itemvalue="Gradle.ReqresInTest.registerUnSuccessful" />
-        <item itemvalue="Gradle.ReqresInTest.updateSuccessful" />
-        <item itemvalue="Gradle.ReqresInTest.updateUnsuccessful" />
-        <item itemvalue="Gradle.ReqresInTest.registerSuccessful" />
+        <item itemvalue="Gradle.ReqresInTest.singleUserWithLombok" />
+        <item itemvalue="Gradle.ReqresInTest.checkFirstNameSingleUser" />
+        <item itemvalue="Gradle.ReqresInTest.checkIdSingleUser" />
       </list>
     </recent_temporary>
   </component>
@@ -189,6 +194,18 @@
       <option name="presentableId" value="Default" />
       <updated>1674724023787</updated>
     </task>
+    <task id="LOCAL-00001" summary="First commit">
+      <created>1674728521879</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1674728521879</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
   </component>
 </project>

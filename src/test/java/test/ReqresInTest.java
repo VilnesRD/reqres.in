@@ -1,105 +1,69 @@
 package test;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import test.lombok.LombokUserData;
+import test.model.UserData;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static test.Specs.request;
 
 
 public class ReqresInTest {
 
     @Test
+    @DisplayName("Check single user with spec")
     void checkIdSingleUser() {
         given()
+                .spec(request)
                 .when()
-                .get("https://reqres.in/api/users/2")
+                .get("/users/2")
                 .then()
+                .spec(Specs.responseSpec)
                 .body("data.id", is(2));
 
     }
 
     @Test
+    @DisplayName("Check first name of single user with model")
     void checkFirstNameSingleUser() {
-        given()
+        UserData userData = given()
+                .spec(request)
                 .when()
-                .get("https://reqres.in/api/users/2")
+                .get("/users/2")
                 .then()
-                .body("data.first_name", is("Janet"));
+                .spec(Specs.responseSpec)
+                .extract().as(UserData.class);
+
+        assertEquals("Janet", userData.getData().getFirstName());
     }
 
     @Test
-    void singleUserNotFound() {
-        given()
+    @DisplayName("Check first name of single user with lombok")
+    void singleUserWithLombok() {
+        LombokUserData userData = given()
+                .spec(request)
                 .when()
-                .get("https://reqres.in/api/users/23")
+                .get("/users/2")
                 .then()
-                .statusCode(404);
+                .spec(Specs.responseSpec)
+                .extract().as(LombokUserData.class);
+
+        assertEquals("Janet", userData.getUser().getFirstName());
     }
 
     @Test
-    void createUser() {
-        String body = "{\n" +
-                "    \"name\": \"morpheus\",\n" +
-                "    \"job\": \"leader\"\n" +
-                "}";
-
+    @DisplayName("Check name using groovy")
+    public void checkEmailUsingGroovy() {
         given()
-                .contentType(JSON)
-                .body(body)
+                .spec(request)
                 .when()
-                .post("https://reqres.in/api/users")
+                .get("/unknown")
                 .then()
-                .statusCode(201)
-                .body("name", is("morpheus"))
-                .body("job", is("leader"));
-    }
-
-    @Test
-    void updateUser() {
-        String body = "{\n" +
-                "    \"name\": \"morpheus\",\n" +
-                "    \"job\": \"zion resident\"\n" +
-                "}";
-
-        given()
-                .contentType(JSON)
-                .body(body)
-                .when()
-                .put("https://reqres.in/api/users/2")
-                .then()
-                .statusCode(200)
-                .body("name", is("morpheus"))
-                .body("job", is("zion resident"));
-    }
-
-    @Test
-    void registerSuccessful() {
-        String body = "{\n" +
-                "    \"email\":  \"eve.holt@reqres.in\",\n" +
-                "    \"password\": \"pistol\"\n}";
-        given()
-                .contentType(JSON)
-                .body(body)
-                .when()
-                .post("https://reqres.in/api/register")
-                .then()
-                .statusCode(200)
-                .body("token", is("QpwL5tke4Pnpja7X4"));
-    }
-
-    @Test
-    void registerUnSuccessful() {
-        String body = "{\n" +
-                "    \"email\":  \"eve.holt@reqres.in\"\n}";
-        given()
-                .contentType(JSON)
-                .body(body)
-                .when()
-                .post("https://reqres.in/api/register")
-                .then()
-                .statusCode(400)
-                .body("error", is("Missing password"));
+                .body("data.findAll{it.id == 5}.name", hasItem("tigerlily"));
     }
 
 }
