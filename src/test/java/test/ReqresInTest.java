@@ -2,68 +2,110 @@ package test;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import test.lombok.LombokUserData;
-import test.model.UserData;
+import test.model.RegisterUser;
+import test.model.User;
+import test.model.UserRequest;
+import test.model.UserResponse;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.http.ContentType.JSON;
-import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static test.Specs.request;
+import static test.Specs.responseSpec;
 
 
 public class ReqresInTest {
+    @Test
+    @DisplayName("Получение списка пользователей")
+    void userListWithLombok() {
+        User data = given().spec(request)
+                .when()
+                .get("/users?page=2")
+                .then()
+                .log().body()
+                .extract().as(User.class);
+    }
 
     @Test
-    @DisplayName("Check single user with spec")
-    void checkIdSingleUser() {
+    @DisplayName("Проверка наличия пользователя в базе")
+    void singleUserNotFound() {
         given()
                 .spec(request)
                 .when()
-                .get("/users/2")
+                .get("/users/23")
                 .then()
-                .spec(Specs.responseSpec)
-                .body("data.id", is(2));
-
+                .statusCode(404);
     }
 
     @Test
-    @DisplayName("Check first name of single user with model")
-    void checkFirstNameSingleUser() {
-        UserData userData = given()
-                .spec(request)
-                .when()
-                .get("/users/2")
-                .then()
-                .spec(Specs.responseSpec)
-                .extract().as(UserData.class);
+    @DisplayName("Добавление пользователя")
+    void createUserLombok() {
+        UserRequest body = new UserRequest();
+        body.setName("Dmitry");
+        body.setJob("lawyer");
 
-        assertEquals("Janet", userData.getData().getFirstName());
+        UserResponse response = given().spec(request)
+                .body(body)
+                .when()
+                .post("/users")
+                .then()
+                .statusCode(201)
+                .extract().as(UserResponse.class);
+
+        assertEquals(body.getName(), response.getName());
+        assertEquals(body.getJob(), response.getJob());
     }
 
     @Test
-    @DisplayName("Check first name of single user with lombok")
-    void singleUserWithLombok() {
-        LombokUserData userData = given()
-                .spec(request)
-                .when()
-                .get("/users/2")
-                .then()
-                .spec(Specs.responseSpec)
-                .extract().as(LombokUserData.class);
+    @DisplayName("Обновление информации о пользователе")
+    void updateUserLombok() {
+        UserRequest body = new UserRequest();
+        body.setName("Vasilii");
+        body.setJob("programmer");
 
-        assertEquals("Janet", userData.getUser().getFirstName());
+        UserResponse response = given().spec(request)
+                .body(body)
+                .when()
+                .put("/users/2")
+                .then()
+                .spec(responseSpec)
+                .extract().as(UserResponse.class);
+
+        assertEquals(body.getName(), response.getName());
+        assertEquals(body.getJob(), response.getJob());
     }
 
     @Test
-    @DisplayName("Check name using groovy")
-    public void checkEmailUsingGroovy() {
-        given()
-                .spec(request)
+    @DisplayName("Регистрация пользователя")
+    void registerSuccessfulLombok() {
+        RegisterUser body = new RegisterUser();
+        body.setEmail("eve.holt@reqres.in");
+        body.setPassword("pistol");
+
+        UserResponse response = given().spec(request)
+                .body(body)
                 .when()
-                .get("/unknown")
+                .post("/register")
                 .then()
-                .body("data.findAll{it.id == 5}.name", hasItem("tigerlily"));
+                .spec(responseSpec)
+                .extract().as(UserResponse.class);
+
+        assertEquals("4", response.getId());
+        assertEquals("QpwL5tke4Pnpja7X4", response.getToken());
     }
 
+    @Test
+    @DisplayName("Проверка id и email пользователя")
+    void checkIdAndEmailOfFeaturedUser() {
+        User userResponse = given().spec(request)
+                .when()
+                .pathParam("id", "2")
+                .get("/users/{id}")
+                .then()
+                .spec(responseSpec)
+                .extract().jsonPath().getObject("data", User.class);
+
+        assertEquals(2, userResponse.getId());
+        assertTrue(userResponse.getEmail().endsWith("@reqres.in"));
+    }
 }
