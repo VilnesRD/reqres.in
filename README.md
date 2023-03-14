@@ -49,7 +49,7 @@
 1. Открыть <a target="_blank" href="https://jenkins.autotests.cloud/job/diplom_reqresIn_16/">проект</a>
 2. Нажать **Собрать**
 
-## <img src="images/logo/Allure.svg" width="25" height="25"  alt="Allure"/></a> Отчет в <a target="_blank" href="https://jenkins.autotests.cloud/job/diplom_reqresIn_16/2/allure/">Allure report</a>
+## <img src="media/icons/Allure.svg" width="25" height="25"  alt="Allure"/></a> Отчет в <a target="_blank" href="https://jenkins.autotests.cloud/job/diplom_reqresIn_16/2/allure/">Allure report</a>
 
 *После выполнения сборки, в блоке <code><strong>*История сборок*</strong></code> напротив номера сборки появится
 значок <img width="2%" title="Allure Report" src="media/icons/Allure.svg"><code><strong>*Allure
@@ -70,7 +70,7 @@ Report*</strong></code>, кликнув по которому, откроетс�
 >- [x] <code><strong>*EXECUTORS*</strong></code> - отображает исполнителя текущей сборки (ссылка на сборку в Jenkins)
 
 <p align="center">
-  <img src="media/screen/media/screens/AllureReport.png" alt="Allure Report" width="900">
+  <img src="media/screens/AllureReport.png" alt="Allure Report" width="900">
 </p>
 
 ## <img width="4%" title="Allure TestOPS" src="media/icons/Allure_TO.svg"> Интеграция с [Allure TestOps](https://allure.autotests.cloud/launch/20502)
@@ -78,13 +78,13 @@ Report*</strong></code>, кликнув по которому, откроетс�
 ### :pushpin: Основной дашборд
 
 <p align="center">
-  <img src="media/screen/media/screens/AllureReportTO.png" alt="dashboards" width="900">
+  <img src="media/screens/AllureReportTO.png" alt="dashboards" width="900">
 </p>
 
 ### :pushpin: Тест-кейсы
 
 <p align="center">
-  <img src="media/screen/AllureReportTOCases.png" alt="test cases" width="900">
+  <img src="media/screens/AllureReportTOCases.png" alt="test cases" width="900">
 </p>
 
 ## <img width="4%" title="Telegram" src="media/icons/Telegram.svg"> Уведомления в Telegram с использованием бота
@@ -92,5 +92,5 @@ Report*</strong></code>, кликнув по которому, откроетс�
 > После завершения сборки специальный бот, созданный в <code>Telegram</code>, автоматически обрабатывает и отправляет сообщение с отчетом о прогоне тестов.
 
 <p align="center">
-<img title="Telegram Notifications" src="media/screen/TgResults.png">
+<img title="Telegram Notifications" src="media/screens/TgResults.png">
 </p>
