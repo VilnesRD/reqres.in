@@ -1,12 +1,11 @@
 ## Учебный проект по автоматизации тестирования (API)
 <a name="Ссылка"></a>
 ### Веб сайт <a target="_blank" href="https://reqres.in/">Reqres.in</a>
-
 <p align="center">
-<img title="Reqres.in" src="MAINPAGE">
+<img title="Reqres.in" src="media/screens/ReqresInMain.png">
 </p>
 
-## :maple_leaf: Содержание:
+## :pushpin: Содержание:
 
 - Технологии и инструменты
 - Список проверок, реализованных в тестах
@@ -16,7 +15,7 @@
 - Интеграция с Jira
 - Уведомление в Telegram о результатах прогона тестов
 
-## :maple_leaf:Технологии и инструменты
+## :pushpin:Технологии и инструменты
 
 <p align="center">
 <a href="https://www.jetbrains.com/idea/"><img src="media/icons/Idea.svg" width="50" height="50"  alt="IDEA"/></a>
